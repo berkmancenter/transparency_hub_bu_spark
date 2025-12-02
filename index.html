@@ -5,272 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Transparency Hub - Social Media Policy Analysis</title>
     <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            min-height: 100vh;
-            line-height: 1.6;
-        }
-
-        /* Brand Color Palette */
-        :root {
-            --spark-teal: #00A896;
-            --harvard-red: #BC2037;
-            --state-blue: #587C8D;
-            --light-gray: #f8f9fa;
-            --dark-gray: #343a40;
-            --white: #ffffff;
-        }
-
-        /* Header */
-        .header {
-            background: linear-gradient(135deg, var(--spark-teal) 0%, var(--state-blue) 100%);
-            color: white;
-            padding: 2rem 0;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-        }
-
-        .header-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            text-align: center;
-        }
-
-        .header h1 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
-
-        .header p {
-            font-size: 1.2rem;
-            opacity: 0.9;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        /* Navigation */
-        .nav-container {
-            background: var(--white);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .nav {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            padding: 1rem;
-        }
-
-        .nav-item {
-            background: linear-gradient(135deg, var(--spark-teal) 0%, var(--state-blue) 100%);
-            color: white;
-            padding: 0.75rem 1.5rem;
-            margin: 0.25rem;
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            font-size: 1rem;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-
-        .nav-item:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-            background: linear-gradient(135deg, var(--harvard-red) 0%, var(--spark-teal) 100%);
-        }
-
-        .nav-item.active {
-            background: linear-gradient(135deg, var(--harvard-red) 0%, var(--state-blue) 100%);
-            transform: translateY(-2px);
-        }
-
-        /* Main Content */
-        .container {
-            max-width: 1400px;
-            margin: 2rem auto;
-            padding: 0 2rem;
-        }
-
-        .section {
-            display: none;
-            background: var(--white);
-            border-radius: 15px;
-            padding: 2rem;
-            margin-bottom: 2rem;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            border-left: 5px solid var(--spark-teal);
-        }
-
-        .section.active {
-            display: block;
-            animation: fadeIn 0.5s ease-in-out;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .section h2 {
-            color: var(--dark-gray);
-            font-size: 2rem;
-            margin-bottom: 1rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 2px solid var(--spark-teal);
-        }
-
-        .section p {
-            color: var(--state-blue);
-            font-size: 1.1rem;
-            margin-bottom: 1.5rem;
-            line-height: 1.7;
-        }
-
-        .visualization-frame {
-            width: 100%;
-            height: 700px;
-            border: none;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            background: var(--light-gray);
-        }
-
-        .loading {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 400px;
-            color: var(--state-blue);
-            font-size: 1.2rem;
-        }
-
-        .spinner {
-            border: 4px solid var(--light-gray);
-            border-top: 4px solid var(--spark-teal);
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            animation: spin 1s linear infinite;
-            margin-right: 1rem;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        /* Overview Grid */
-        .overview-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin: 2rem 0;
-        }
-
-        .overview-card {
-            background: linear-gradient(135deg, var(--white) 0%, var(--light-gray) 100%);
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            border-left: 4px solid var(--spark-teal);
-            transition: transform 0.3s ease;
-        }
-
-        .overview-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .overview-card h3 {
-            color: var(--harvard-red);
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
-        }
-
-        .overview-card p {
-            color: var(--dark-gray);
-            font-size: 0.95rem;
-        }
-
-        /* Footer */
-        .footer {
-            background: var(--dark-gray);
-            color: white;
-            text-align: center;
-            padding: 2rem;
-            margin-top: 3rem;
-        }
-
-        .footer p {
-            opacity: 0.8;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .header h1 {
-                font-size: 2rem;
-            }
-            
-            .nav {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .nav-item {
-                width: 200px;
-                text-align: center;
-            }
-            
-            .container {
-                padding: 0 1rem;
-            }
-            
-            .section {
-                padding: 1.5rem;
-            }
-            
-            .visualization-frame {
-                height: 500px;
-            }
-        }
-
-        /* Enhanced Styling */
-        .highlight {
-            background: linear-gradient(120deg, var(--spark-teal) 0%, var(--harvard-red) 100%);
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-weight: 700;
-        }
-
-        .badge {
-            display: inline-block;
-            background: var(--harvard-red);
-            color: white;
-            padding: 0.25rem 0.75rem;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-left: 0.5rem;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <!-- Header -->
@@ -281,117 +16,312 @@
         </div>
     </div>
 
-    <!-- Navigation -->
+    <!-- TOC Nav – points by question -->
     <div class="nav-container">
         <div class="nav">
-            <button class="nav-item active" onclick="showSection('overview')">Overview</button>
-            <button class="nav-item" onclick="showSection('q1')">Q1: Readability Analysis</button>
-            <button class="nav-item" onclick="showSection('q5')">Q5: Policy Complexity</button>
-            <button class="nav-item" onclick="showSection('q6')">Q6: Platform Comparison</button>
+            <a class="nav-item active" href="#overview">Overview</a>
+            <a class="nav-item" href="#q1">Q1: Length & Complexity</a>
+            <a class="nav-item" href="#q2">Q2: Explicit Opt-in & Opt-out</a>
+            <a class="nav-item" href="#q3">Q3: Most Frequent Terms</a>
+            <a class="nav-item" href="#q4">Q4: Political Influences</a>
+            <a class="nav-item" href="#q5">Q5: Policy Complexity</a>
+            <a class="nav-item" href="#q6">Q6: Platform Comparison</a>
+            <a class="nav-item" href="#q7">Q7: Arbitration</a>
+            <a class="nav-item" href="#q8">Q8: Class Action</a>
         </div>
     </div>
 
-    <!-- Main Content -->
     <div class="container">
-        <!-- Overview Section -->
-        <div id="overview" class="section active">
+        <!-- Overview -->
+        <section id="overview" class="section">
             <h2>Project Overview</h2>
-            <p>This dashboard presents a comprehensive analysis of social media platform policies, examining readability, complexity, and differences between <span class="highlight">Old School</span> and <span class="highlight">New School</span> platforms.</p>
-            
+            <p>
+                This dashboard presents a comprehensive analysis of social media platform policies, examining
+                <span class="highlight">readability</span>,
+                <span class="highlight">complexity</span>, and differences between
+                <span class="highlight">Old School</span> and
+                <span class="highlight">New School</span> platforms.
+            </p>
+
             <div class="overview-grid">
-                <div class="overview-card">
-                    <h3>Q1: Readability Analysis <span class="badge">Interactive</span></h3>
-                    <p>Comprehensive analysis of policy document readability across different platforms and time periods. Includes complexity metrics, grade levels, and word count trends.</p>
-                </div>
-                <div class="overview-card">
-                    <h3>Q5: Policy Complexity <span class="badge">Spice Analysis</span></h3>
-                    <p>Advanced "spiciness" analysis categorizing policy language into User Rights, Restrictive, and Neutral classifications with interactive quadrant visualization.</p>
-                </div>
-                <div class="overview-card">
-                    <h3>Q6: Platform Comparison <span class="badge">Cohort Focus</span></h3>
-                    <p>Direct comparison between Old School and New School platforms analyzing document types, phrase prevalence, and policy evolution over time.</p>
-                </div>
+                <a href="#q1">
+                    <div class="overview-card">
+                        <h3>Q1: Length & Complexity Over Time<span class="badge">Interactive</span></h3>
+                        <p>Word count, sentence length, and readability metrics to show how privacy policies have grown in length and complexity over the years.</p>
+                    </div>
+                </a>
+                <a href="#q2">
+                    <div class="overview-card">
+                        <h3>Q2: Explicit Opt-in vs Opt-out<span class="badge">Consent Design</span></h3>
+                        <p>How often companies use explicit opt-in versus opt-out language, and how these consent choices differ across organizations and over time.</p>
+                    </div>
+                </a>
+                <a href="#q3">
+                    <div class="overview-card">
+                        <h3>Q3: Most Frequent Terms & Templates<span class="badge">Text Mining</span></h3>
+                        <p>“Most common terms and phrases in privacy policies, plus evidence of “copy-paste” or shared template language across organizations in the same group.</p>
+                    </div>
+                </a>
+                <a href="#q4">
+                    <div class="overview-card">
+                        <h3>Q4: Political Influences on Policy<span class="badge">Election Impact</span></h3>
+                        <p>How major political events (2016 and 2024 elections) align with changes in privacy policies, and which companies showed the largest shifts before and after these moments.</p>
+                    </div>
+                </a>
+                <a href="#q5">
+                    <div class="overview-card">
+                        <h3>Q5: Spiciest Policy Language<span class="badge">Superlatives</span></h3>
+                        <p>Surprising, extreme, or especially user-unfriendly (and user-friendly) phrases—highlighting the “spiciest” clauses and standout pro-user protections.</p>
+                    </div>
+                </a>
+                <a href="#q6">
+                    <div class="overview-card">
+                        <h3>Q6: Old vs New School Platforms<span class="badge">Cohort Focus</span></h3>
+                        <p>Comparing “old school” vs. “new school” platforms (e.g., Tumblr vs. TikTok) on document types, clause prevalence, and how their privacy policies have evolved.</p>
+                    </div>
+                </a>
+                <a href="#q7">
+                    <div class="overview-card">
+                        <h3>Q7: Mandatory Arbitration Clauses<span class="badge">Dispute Resolution</span></h3>
+                        <p>Which policies include mandatory arbitration, what those clauses entail, and a severity scale comparing how restrictive different companies’ arbitration terms are.</p>
+                    </div>
+                </a>
+                <a href="#q8">
+                    <div class="overview-card">
+                        <h3>Q8: Class Action Prohibitions<span class="badge">Litigation Limits</span></h3>
+                        <p>Tracking the adoption of class action waivers over time (e.g., 2010–present), and how strongly different policies restrict users’ ability to join class lawsuits.</p>
+                    </div>
+                </a>
             </div>
-        </div>
+        </section>
 
-        <!-- Q1 Section -->
-        <div id="q1" class="section">
-            <h2>Q1: Readability Analysis <span class="badge">4 Visualizations</span></h2>
-            <p>Explore how social media policies have evolved in terms of <span class="highlight">readability</span>, <span class="highlight">complexity</span>, and <span class="highlight">length</span> over time across different platforms.</p>
-            
-            <div style="margin: 2rem 0;">
-                <h3 style="color: var(--state-blue); margin-bottom: 1rem;">Policy Complexity Over Time</h3>
-                <iframe src="visualizations/q1_html/q1_complexity_over_time.html?v=3" class="visualization-frame"></iframe>
-            </div>
-            
-            <div style="margin: 2rem 0;">
-                <h3 style="color: var(--state-blue); margin-bottom: 1rem;">Grade Level Analysis by Company</h3>
-                <iframe src="visualizations/q1_html/q1_grade_level_by_company.html?v=3" class="visualization-frame"></iframe>
-            </div>
-            
-            <div style="margin: 2rem 0;">
-                <h3 style="color: var(--state-blue); margin-bottom: 1rem;">Length vs Readability Correlation</h3>
-                <iframe src="visualizations/q1_html/q1_length_vs_readability.html?v=3" class="visualization-frame"></iframe>
-            </div>
-            
-            <div style="margin: 2rem 0;">
-                <h3 style="color: var(--state-blue); margin-bottom: 1rem;">Word Count Evolution</h3>
-                <iframe src="visualizations/q1_html/q1_word_count_over_time.html?v=3" class="visualization-frame"></iframe>
-            </div>
-        </div>
+        <!-- Invisible anchors for question starts (no visible "section starters") -->
+        <div id="q1"></div>
 
-        <!-- Q5 Section -->
-        <div id="q5" class="section">
-            <h2>Q5: Policy Complexity Analysis <span class="badge">Spice Metrics</span></h2>
-            <p>Deep dive into policy language complexity using our proprietary <span class="highlight">"spice"</span> methodology, categorizing content as User Rights, Restrictive, or Neutral.</p>
-            
-            <div style="margin: 2rem 0;">
-                <h3 style="color: var(--state-blue); margin-bottom: 1rem;">Policy Spice Quadrant Analysis</h3>
-                <iframe src="visualizations/q5_html/spice_quadrant.html?v=3" class="visualization-frame"></iframe>
-            </div>
-            
-            <div style="margin: 2rem 0;">
-                <h3 style="color: var(--state-blue); margin-bottom: 1rem;">Clause Prevalence Across Platforms</h3>
-                <iframe src="visualizations/q5_html/clause_prevalence.html?v=3" class="visualization-frame"></iframe>
-            </div>
-            
-            <div style="margin: 2rem 0;">
-                <h3 style="color: var(--state-blue); margin-bottom: 1rem;">Spice Adoption Trends</h3>
-                <iframe src="visualizations/q5_html/spice_adoption_delta.html?v=3" class="visualization-frame"></iframe>
-            </div>
-        </div>
+        <!-- Q1 SLIDES -->
+        <section id="q1_complexity" class="section section-viz">
+            <h2>Q1 · Policy Complexity Over Time</h2>
+            <p>How policy complexity scores change across time and platforms.</p>
+            <h3 class="subheading">Complexity Over Time</h3>
+            <iframe src="visualizations/q1_html/q1_complexity_over_time.html?v=3" class="visualization-frame"></iframe>
+        </section>
 
-        <!-- Q6 Section -->
-        <div id="q6" class="section">
-            <h2>Q6: Old School vs New School Comparison <span class="badge">Cohort Analysis</span></h2>
-            <p>Comprehensive comparison between traditional social media platforms and emerging platforms, analyzing policy differences, evolution patterns, and user experience implications.</p>
-            
-            <div style="margin: 2rem 0;">
-                <h3 style="color: var(--state-blue); margin-bottom: 1rem;">Document Type Distribution</h3>
-                <iframe src="visualizations/q6_html/doc_type_mix.html?v=3" class="visualization-frame"></iframe>
-            </div>
-            
-            <div style="margin: 2rem 0;">
-                <h3 style="color: var(--state-blue); margin-bottom: 1rem;">Phrase Usage Comparison</h3>
-                <iframe src="visualizations/q6_html/phrase_rates_group.html?v=3" class="visualization-frame"></iframe>
-            </div>
-            
-            <div style="margin: 2rem 0;">
-                <h3 style="color: var(--state-blue); margin-bottom: 1rem;">Platform Policy Gap Analysis</h3>
-                <iframe src="visualizations/q6_html/phrase_gap.html?v=3" class="visualization-frame"></iframe>
-            </div>
-            
-            <div style="margin: 2rem 0;">
-                <h3 style="color: var(--state-blue); margin-bottom: 1rem;">Policy Length Distribution</h3>
-                <iframe src="visualizations/q6_html/length_violin.html?v=3" class="visualization-frame"></iframe>
-            </div>
-            
-            <div style="margin: 2rem 0;">
-                <h3 style="color: var(--state-blue); margin-bottom: 1rem;">Length Evolution Over Time</h3>
-                <iframe src="visualizations/q6_html/length_over_time.html?v=3" class="visualization-frame"></iframe>
-            </div>
-        </div>
+        <section id="q1_grade" class="section section-viz">
+            <h2>Q1 · Grade Level by Company</h2>
+            <p>Estimated grade level required to understand policy text for each platform.</p>
+            <h3 class="subheading">Grade Level Analysis</h3>
+            <iframe src="visualizations/q1_html/q1_grade_level_by_company.html?v=3" class="visualization-frame"></iframe>
+        </section>
+
+        <section id="q1_length_vs_readability" class="section section-viz">
+            <h2>Q1 · Length vs Readability</h2>
+            <p>Do longer policies tend to be harder to read? This chart shows their relationship.</p>
+            <h3 class="subheading">Length vs Readability Correlation</h3>
+            <iframe src="visualizations/q1_html/q1_length_vs_readability.html?v=3" class="visualization-frame"></iframe>
+        </section>
+
+        <section id="q1_word_count" class="section section-viz">
+            <h2>Q1 · Word Count Evolution</h2>
+            <p>How policy lengths have expanded or contracted across years and platforms.</p>
+            <h3 class="subheading">Word Count Over Time</h3>
+            <iframe src="visualizations/q1_html/q1_word_count_over_time.html?v=3" class="visualization-frame"></iframe>
+        </section>
+
+        <div id="q2"></div>
+
+        <section id="q2_control_freq_heatmap" class="section section-viz">
+            <h2>Q2 · Control Frequency Heatmap</h2>
+            <p>How often do companies provide explicit opt-in vs. opt-out language?</p>
+            <h3 class="subheading">Word Count Over Time</h3>
+            <iframe src="visualizations/q2_html/q2_control_frequency_heatmap.html?v=3" class="visualization-frame"></iframe>
+        </section>
+
+        <section id="q2_opt_in_pattern" class="section section-viz">
+            <h2>Q2 · Opt-in Language Patterns</h2>
+            <p>How often do companies provide explicit opt-in vs. opt-out language?</p>
+            <h3 class="subheading">Word Count Over Time</h3>
+            <iframe src="visualizations/q2_html/q2_opt_in_pattern_breakdown.html?v=3" class="visualization-frame"></iframe>
+        </section>
+
+        <section id="q2_opt_in_ratio_company" class="section section-viz">
+            <h2>Q2 · Opt-in Ratio</h2>
+            <p>How often do companies provide explicit opt-in vs. opt-out language?</p>
+            <h3 class="subheading">Word Count Over Time</h3>
+            <iframe src="visualizations/q2_html/q2_opt_in_ratio_by_company.html?v=3" class="visualization-frame"></iframe>
+        </section>
+
+        <section id="q2_opt_in_ratio_time" class="section section-viz">
+            <h2>Q2 · Opt-in Ratio</h2>
+            <p>How often do companies provide explicit opt-in vs. opt-out language?</p>
+            <h3 class="subheading">Word Count Over Time</h3>
+            <iframe src="visualizations/q2_html/q2_opt_in_ratio_over_time.html?v=3" class="visualization-frame"></iframe>
+        </section>
+
+        <section id="q2_opt_in_vs_opt_out" class="section section-viz">
+            <h2>Q2 · Explicit Opt-in and Opt-out Language</h2>
+            <p>How often do companies provide explicit opt-in vs. opt-out language?</p>
+            <h3 class="subheading">Word Count Over Time</h3>
+            <iframe src="visualizations/q2_html/q2_opt_in_vs_opt_out_by_company.html?v=3" class="visualization-frame"></iframe>
+        </section>
+
+        <section id="q2_opt_out_pattern" class="section section-viz">
+            <h2>Q2 · Opt-out Pattern</h2>
+            <p>How often do companies provide explicit opt-in vs. opt-out language?</p>
+            <h3 class="subheading">Word Count Over Time</h3>
+            <iframe src="visualizations/q2_html/q2_opt_out_pattern_breakdown.html?v=3" class="visualization-frame"></iframe>
+        </section>
+
+        <section id="q2_radar" class="section section-viz">
+            <h2>Q2 · Privacy Control Radar</h2>
+            <p>How often do companies provide explicit opt-in vs. opt-out language?</p>
+            <h3 class="subheading">Word Count Over Time</h3>
+            <iframe src="visualizations/q2_html/q2_radar_chart.html?v=3" class="visualization-frame"></iframe>
+        </section>
+
+
+        <div id="q3"></div>
+
+        <section id="q3_most_common" class="section section-viz">
+            <h2>Q3 · Most Frequent Words</h2>
+            <p>What terms/phrases are the most common in terms & conditions among different organizations within the same group?</p>
+            <h3 class="subheading">Word Count Over Time</h3>
+            <iframe src="visualizations/q3_html/most_common_terms.html?v=3" class="visualization-frame"></iframe>
+        </section>
+
+        <section id="q3_shared_phrases" class="section section-viz">
+            <h2>Q3 · Top Bigrams</h2>
+            <p>What terms/phrases are the most common in terms & conditions among different organizations within the same group?</p>
+            <h3 class="subheading">Word Count Over Time</h3>
+            <iframe src="visualizations/q3_html/shared_phrases.html?v=3" class="visualization-frame"></iframe>
+        </section>
+
+        <section id="q3_similarity_heatmap" class="section section-viz">
+            <h2>Q3 · Textual Similarity Heatmap</h2>
+            <p>What terms/phrases are the most common in terms & conditions among different organizations within the same group?</p>
+            <h3 class="subheading">Word Count Over Time</h3>
+            <iframe src="visualizations/q3_html/similarity_heatmap.html?v=3" class="visualization-frame"></iframe>
+        </section>
+
+        <div id="q4"></div>
+        
+        <section id="q4_comp_timeseries" class="section section-viz">
+            <h2>Q4 · Policy Change Over Time</h2>
+            <p>What terms/phrases are the most common in terms & conditions among different organizations within the same group?</p>
+            <h3 class="subheading">Word Count Over Time</h3>
+            <iframe src="visualizations/q4_html/company_timeseries.html?v=3" class="visualization-frame"></iframe>
+        </section>
+
+        <section id="q4_group_dist" class="section section-viz">
+            <h2>Q4 · Policy Change by Type</h2>
+            <p>What terms/phrases are the most common in terms & conditions among different organizations within the same group?</p>
+            <h3 class="subheading">Word Count Over Time</h3>
+            <iframe src="visualizations/q4_html/group_distributions.html?v=3" class="visualization-frame"></iframe>
+        </section>
+
+        <section id="q4_top_changes" class="section section-viz">
+            <h2>Q4 · Top Companies</h2>
+            <p>What terms/phrases are the most common in terms & conditions among different organizations within the same group?</p>
+            <h3 class="subheading">Word Count Over Time</h3>
+            <iframe src="visualizations/q4_html/top_changes.html?v=3" class="visualization-frame"></iframe>
+        </section>
+
+        <!-- Q5 anchor -->
+        <div id="q5"></div>
+
+        <!-- Q5 SLIDES -->
+        <section id="q5_quadrant" class="section section-viz">
+            <h2>Q5 · Policy Spice Quadrant</h2>
+            <p>Where platforms fall along User Rights vs Restrictive language dimensions.</p>
+            <h3 class="subheading">Spice Quadrant Analysis</h3>
+            <iframe src="visualizations/q5_html/spice_quadrant.html?v=3" class="visualization-frame"></iframe>
+        </section>
+
+        <section id="q5_clause_prev" class="section section-viz">
+            <h2>Q5 · Clause Prevalence</h2>
+            <p>How often key clause types appear across platforms and cohorts.</p>
+            <h3 class="subheading">Clause Prevalence Across Platforms</h3>
+            <iframe src="visualizations/q5_html/clause_prevalence.html?v=3" class="visualization-frame"></iframe>
+        </section>
+
+        <section id="q5_spice_trends" class="section section-viz">
+            <h2>Q5 · Spice Adoption Trends</h2>
+            <p>Trends in the adoption of “spicy” (more restrictive) language over time.</p>
+            <h3 class="subheading">Spice Adoption Delta</h3>
+            <iframe src="visualizations/q5_html/spice_adoption_delta.html?v=3" class="visualization-frame"></iframe>
+        </section>
+
+        <!-- Q6 anchor -->
+        <div id="q6"></div>
+
+        <!-- Q6 SLIDES -->
+        <section id="q6_doc_type_mix" class="section section-viz">
+            <h2>Q6 · Document Type Distribution</h2>
+            <p>How different cohorts balance Terms of Service, Privacy, and Guidelines documents.</p>
+            <h3 class="subheading">Doc Type Mix by Cohort</h3>
+            <iframe src="visualizations/q6_html/doc_type_mix.html?v=3" class="visualization-frame"></iframe>
+        </section>
+
+        <section id="q6_phrase_usage" class="section section-viz">
+            <h2>Q6 · Phrase Usage Comparison</h2>
+            <p>Key phrase usage rates between Old School and New School platforms.</p>
+            <h3 class="subheading">Phrase Usage Comparison</h3>
+            <iframe src="visualizations/q6_html/phrase_rates_group.html?v=3" class="visualization-frame"></iframe>
+        </section>
+
+        <section id="q6_gap" class="section section-viz">
+            <h2>Q6 · Policy Gap Analysis</h2>
+            <p>Where New School and Old School platforms diverge most in their policies.</p>
+            <h3 class="subheading">Platform Policy Gap</h3>
+            <iframe src="visualizations/q6_html/phrase_gap.html?v=3" class="visualization-frame"></iframe>
+        </section>
+
+        <section id="q6_length_violin" class="section section-viz">
+            <h2>Q6 · Policy Length Distribution</h2>
+            <p>Distribution of policy lengths across platform cohorts.</p>
+            <h3 class="subheading">Length Distribution (Violin)</h3>
+            <iframe src="visualizations/q6_html/length_violin.html?v=3" class="visualization-frame"></iframe>
+        </section>
+
+        <section id="q6_length_time" class="section section-viz">
+            <h2>Q6 · Length Over Time</h2>
+            <p>How policy lengths have changed over time across cohorts.</p>
+            <h3 class="subheading">Length Evolution Over Time</h3>
+            <iframe src="visualizations/q6_html/length_over_time.html?v=3" class="visualization-frame"></iframe>
+        </section>
+
+        <!-- Q7 anchor -->
+        <div id="q7"></div>
+
+        <!-- Q7 SLIDE -->
+        <section id="q7_arbitration_count" class="section section-viz">
+            <h2>Q7 · Arbitration Clauses</h2>
+            <p>Severity and presence of arbitration clauses across platforms.</p>
+            <h3 class="subheading">Arbitration Analysis</h3>
+            <iframe src="visualizations/q7_html/arbitration_count.html?v=3" class="visualization-frame"></iframe>
+        </section>
+
+        <!-- Q7 SLIDE -->
+        <section id="q7_arbitration_fig" class="section section-viz">
+            <h2>Q7 · Arbitration Clauses</h2>
+            <p>Severity and presence of arbitration clauses across platforms.</p>
+            <h3 class="subheading">Arbitration Analysis</h3>
+            <iframe src="visualizations/q7_html/arbitration_figure.html?v=3" class="visualization-frame"></iframe>
+        </section>
+
+        <!-- Q8 anchor -->
+        <div id="q8"></div>
+
+        <!-- Q8 SLIDE -->
+        <section id="q8_class_action" class="section section-viz">
+            <h2>Q8 · Class Action Analysis</h2>
+            <p>Class action waiver patterns and changes over time.</p>
+            <h3 class="subheading">Class Action Analysis</h3>
+            <iframe src="visualizations/q8_html/index.html?v=3" class="visualization-frame"></iframe>
+        </section>
     </div>
+
+    <!-- Floating next-slide chevron -->
+    <button id="next-slide-btn" class="next-slide-btn">⌄</button>
 
     <!-- Footer -->
     <div class="footer">
@@ -400,73 +330,98 @@
     </div>
 
     <script>
-        function showSection(sectionId) {
-            // Hide all sections
-            const sections = document.querySelectorAll('.section');
-            sections.forEach(section => {
-                section.classList.remove('active');
-            });
-            
-            // Remove active class from all nav items
-            const navItems = document.querySelectorAll('.nav-item');
-            navItems.forEach(item => {
-                item.classList.remove('active');
-            });
-            
-            // Show selected section
-            document.getElementById(sectionId).classList.add('active');
-            
-            // Add active class to clicked nav item
-            event.target.classList.add('active');
-            
-            // Smooth scroll to top
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
+    // All visualization "slides"
+    const slides = Array.from(document.querySelectorAll('.section-viz'));
+    const overview = document.getElementById('overview');
+    const nextBtn = document.getElementById('next-slide-btn');
+
+    // Next button behavior: always go to the next slide below the viewport;
+    // if none, go back to overview
+    nextBtn.addEventListener('click', () => {
+        const threshold = 100; // px below top of viewport to consider "next"
+        let target = null;
+
+        for (const slide of slides) {
+            const rect = slide.getBoundingClientRect();
+            if (rect.top > threshold) {
+                target = slide;
+                break;
+            }
         }
 
-        // Add loading animation to iframes
-        document.addEventListener('DOMContentLoaded', function() {
-            const iframes = document.querySelectorAll('.visualization-frame');
-            iframes.forEach(iframe => {
-                iframe.addEventListener('load', function() {
-                    this.style.opacity = '1';
-                });
+        if (target) {
+            target.scrollIntoView({ behavior: 'smooth' });
+        } else {
+            // we’re past the last slide → go back to overview
+            overview.scrollIntoView({ behavior: 'smooth' });
+        }
+    });
+
+    // Scroll spy – highlight nav based on which viz/overview is visible
+    const navLinks = document.querySelectorAll('.nav-item');
+    const spySections = document.querySelectorAll('#overview, .section-viz');
+
+    function questionKeyForSection(id) {
+        if (id === 'overview') return 'overview';
+        if (id.startsWith('q1_')) return 'q1';
+        if (id.startsWith('q2_')) return 'q2';
+        if (id.startsWith('q3_')) return 'q3';
+        if (id.startsWith('q4_')) return 'q4';
+        if (id.startsWith('q5_')) return 'q5';
+        if (id.startsWith('q6_')) return 'q6';
+        if (id.startsWith('q7_')) return 'q7';
+        if (id.startsWith('q8_')) return 'q8';
+        return null;
+    }
+
+    const spyObserver = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (!entry.isIntersecting) return;
+            const key = questionKeyForSection(entry.target.id);
+            if (!key) return;
+
+            navLinks.forEach(link => {
+                const href = link.getAttribute('href'); // e.g., "#q1"
+                const navKey = href.replace('#', '');
+                const isActive =
+                    (key === 'overview' && navKey === 'overview') ||
+                    (key !== 'overview' && navKey === key);
+
+                link.classList.toggle('active', isActive);
             });
         });
+    }, { threshold: 0.4 });
 
-        // Enhanced navigation with keyboard support
-        document.addEventListener('keydown', function(e) {
-            if (e.altKey) {
-                const navItems = document.querySelectorAll('.nav-item');
-                const currentActive = document.querySelector('.nav-item.active');
-                const currentIndex = Array.from(navItems).indexOf(currentActive);
-                
-                if (e.key === 'ArrowLeft' && currentIndex > 0) {
-                    navItems[currentIndex - 1].click();
-                } else if (e.key === 'ArrowRight' && currentIndex < navItems.length - 1) {
-                    navItems[currentIndex + 1].click();
-                }
+    spySections.forEach(sec => spyObserver.observe(sec));
+
+    // Overview card fade-in
+    const cardObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
             }
         });
+    });
 
-        // Add smooth transitions for better UX
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
+    document.querySelectorAll('.overview-card').forEach(card => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(20px)';
+        card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        cardObserver.observe(card);
+    });
+
+    // Fade-in for iframes when loaded
+    document.addEventListener('DOMContentLoaded', function() {
+        const iframes = document.querySelectorAll('.visualization-frame');
+        iframes.forEach(iframe => {
+            iframe.style.opacity = '0';
+            iframe.style.transition = 'opacity 0.4s ease';
+            iframe.addEventListener('load', function() {
+                this.style.opacity = '1';
             });
         });
-
-        document.querySelectorAll('.overview-card').forEach(card => {
-            card.style.opacity = '0';
-            card.style.transform = 'translateY(20px)';
-            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-            observer.observe(card);
-        });
-    </script>
+    });
+</script>
 </body>
 </html>
