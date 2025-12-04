@@ -147,14 +147,14 @@ h3.subheading {
 /* Make viz slides fill most of the screen */
 /* REMOVE fullscreen slide behavior */
 .section-viz {
-    display: block;
-    min-height: auto;
+display: block;
+min-height: auto;
 }
 
 .section-viz .visualization-frame {
-    height: 700px;
-    min-height: unset;
-    flex: unset;
+height: 700px;
+min-height: unset;
+flex: unset;
 }
 
 
